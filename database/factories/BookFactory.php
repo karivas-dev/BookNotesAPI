@@ -13,6 +13,7 @@ use Illuminate\Support\Collection;
 class BookFactory extends Factory
 {
     static  ?Collection $author_ids = null;
+    static ?Collection $category_ids = null;
 
     /**
      * Define the model's default state.
@@ -23,11 +24,15 @@ class BookFactory extends Factory
     {
         if (BookFactory::$author_ids == null)
             BookFactory::$author_ids = Author::pluck('id');
+        if (BookFactory::$category_ids == null)
+            BookFactory::$category_ids = Category::pluck('id');
 
         return [
             'title' => fake()->realText(20),
             'description' => fake()->realText(),
+            'isOwned' => fake()->boolean(),
             'author_id' => BookFactory::$author_ids->random(),
+            'category_id' => BookFactory::$category_ids->random(),
         ];
     }
 }

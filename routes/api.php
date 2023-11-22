@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
-use App\Http\Controllers\BookUserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OwnedController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WishController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,4 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('authors', AuthorController::class);
     Route::apiResource('books', BookController::class);
-    Route::apiResource('bookuser', BookUserController::class);
 });

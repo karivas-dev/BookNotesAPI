@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::paginate();
     }
 
     /**
@@ -20,7 +21,23 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'name' => ['required', 'string', 'max:255', Rule::unique('categories')]
+        ]);
+
+        $category = Category::create($attributes);
+        if ($category) {
+            return response()->json([
+                'message' => 'La categoría se añadió correctamente.',
+                'data' => [
+                    'id' => $category->id
+                ]
+            ], 201);
+        }
+
+        return response()->json([
+            'message' => "No se puedo añadir la categoría."
+        ], 500);
     }
 
     /**

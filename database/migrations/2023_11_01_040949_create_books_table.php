@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->string("description");
+            $table->boolean('isOwned');
             $table->foreignIdFor(Author::class)->constrained();
+            $table->foreignIdFor(Category::class)->constrained();
             $table->timestamps();
         });
     }

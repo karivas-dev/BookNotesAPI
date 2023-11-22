@@ -16,14 +16,7 @@ class CategorySeeder extends Seeder
         $bookCategories = [
             "Ficción Contemporánea",
             "Ciencia Ficción y Fantasía",
-            "Misterio y Suspenso",
-            "Romance",
-            "Literatura Clásica",
-            "No Ficción",
-            "Histórica",
-            "Poesía",
-            "Autoayuda y Desarrollo Personal",
-            "Ciencia y Divulgación Científica"
+            "Misterio y Suspenso"
         ];
 
         Category::factory(count($bookCategories))->sequence(fn($sequence) => [

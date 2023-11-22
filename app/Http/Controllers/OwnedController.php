@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BookUser;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
-class BookUserController extends Controller
+class OwnedController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-
+        return Book::where('isOwned', true)->with('book', 'book.author')->paginate();
     }
 
     /**
@@ -26,7 +26,7 @@ class BookUserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BookUser $bookUser)
+    public function show(Book $bookUser)
     {
         //
     }
@@ -34,7 +34,7 @@ class BookUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, BookUser $bookUser)
+    public function update(Request $request, Book $bookUser)
     {
         //
     }
@@ -42,7 +42,7 @@ class BookUserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BookUser $bookUser)
+    public function destroy(Book $bookUser)
     {
         //
     }

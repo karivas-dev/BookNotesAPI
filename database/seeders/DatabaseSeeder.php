@@ -16,15 +16,13 @@ class DatabaseSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test@test.com',
         ]);
 
         $this->call([
             CategorySeeder::class,
             AuthorSeeder::class,
             BookSeeder::class,
-            CategoryBookSeeder::class,
-            BookUserSeeder::class
         ]);
 
         // \App\Models\User::factory(10)->create();
